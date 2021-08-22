@@ -3,12 +3,16 @@
     class="card"
     :class="{ disabled: isDisabled }"
     :style="{
-      height: `${(920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16}px`,
+      height: `${
+        (viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16
+      }px`,
       width: `${
-        (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4
+        (((viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4
       }px`,
       perspective: `${
-        ((((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4) * 2
+        ((((viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+          4) *
+        2
       }px`,
     }"
   >
@@ -22,11 +26,13 @@
           class="card__content"
           :style="{
             backgroundSize: `${
-              (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+              (((viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16) *
+                3) /
               4 /
               3
             }px ${
-              (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+              (((viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16) *
+                3) /
               4 /
               3
             }px`,
@@ -66,8 +72,10 @@ export default {
     return {
       isDisabled: false,
       isFlipped: false,
+      viewHeight: window.innerHeight,
     };
   },
+
   methods: {
     onToggleFlipCard() {
       if (this.isDisabled) return false;

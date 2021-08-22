@@ -4,7 +4,8 @@
       class="screen__inner"
       :style="{
         width: `${
-          ((((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4 +
+          ((((viewHeight - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+            4 +
             16) *
           Math.sqrt(cardsContext.length)
         }px`,
@@ -40,6 +41,7 @@ export default {
   data() {
     return {
       rules: [],
+      viewHeight: window.innerHeight,
     };
   },
   methods: {
